@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from "vue"
+import {ref, onMounted} from "vue"
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -14,11 +14,39 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 let isPlaying = ref(false)
-// let isPlaying = isPlayings.value
+// console.log(import.meta.env.VITE_NUXT_OPENAI_API_KEY)
 const togglePlaying = () => {
   isPlaying.value = !isPlaying.value;
 };
-console.log(isPlaying.value)
+// console.log(isPlaying.value)
+
+
+
+const quote = ref(null);
+
+
+// onMounted(async () => {
+//   try {
+//     const response = await fetch('/api/quotes');
+//     console.log(response)
+//     // Check if the response is JSON
+//     const contentType = response.headers.get('content-type');
+//     if (contentType && contentType.indexOf('application/json') !== -1) {
+//       const data = await response.json();
+//       if (!data || Object.keys(data).length === 0) {
+//         console.error('Received an empty JSON response.');
+//       } else {
+//         quote.value = data;
+//       }
+//     } else {
+//       const text = await response.text();
+//       console.error('Received non-JSON response:', text);
+//     }
+//     console.log(quote.value)
+//   } catch (error) {
+//     console.error('Failed to fetch quote:', error);
+//   }
+// });
 </script>
 
 <template>
@@ -28,7 +56,7 @@ console.log(isPlaying.value)
         ReadOn
       </Button>
     </DialogTrigger>
-    <DialogContent class="sm:max-w-[80%] md:max-w-[75%] xl:max-w-[50%] h-[90%] ">
+    <DialogContent class="sm:max-w-[80%] md:max-w-[75%] xl:max-w-[50%] h-[96%] sm:h-[90%] ">
       <DialogHeader class="text-center flex flex-col">
         <DialogTitle class="text-center md:text-xl">ReadOn</DialogTitle>
         <DialogDescription>

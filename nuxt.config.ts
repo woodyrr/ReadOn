@@ -1,17 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/icon"],
-  // shadcn: {
-  //   /**
-  //    * Prefix for all the imported component
-  //    */
-  //   prefix: '',
-  //   /**
-  //    * Directory that the component lives in.
-  //    * @default "./components/ui"
-  //    */
-  //   componentDir: './components/ui'
+  // runtimeConfig: {
+  //   public: {
+  //     secret:process.env.OPENAI_API_KEY
+  //   }
+  // },
+  // env: {
+  //   myVariable: process.env.NUXT_ENV_MY_VAR
+  // },
+  runtimeConfig: {
+    openAi: {
+      secretKey: process.env.OPENAI_API_KEY,
+    },
+    
+  },
+  
+
+  // devServer: {
+  //   https: {
+  //     key: './server.key',
+  //     cert: './server.crt'
+  //   }
   // }
 })
