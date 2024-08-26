@@ -2,99 +2,130 @@
   <div class="bg-gray-100 min-h-screen flex flex-col gap-5">
     <header class="text-center font-bold text-[25px] border py-3 border-gray-300 bg-green-200">ReadOn</header>
     <div class="px-[6%] flex gap-2">
-      
-      <linkInput />
       <PlayText />
     </div>
     
   </div>
 </template>
 
-<!-- Caching
-Store API call results to retrieve them faster when the same request is made again. This reduces the need for the server to process and send the same data multiple times.  -->
+
 
 <script setup>
-  import { ref, onMounted } from 'vue';
-
-// console.log(runtimeConfig.apiSecret)
-
-// import fs from "fs";
-// import path from "path";
-// import OpenAI from "openai";
-
-// const openai = new OpenAI();
-
-// const speechFile = path.resolve("./speech.mp3");
-
-// async function main() {
-//   const mp3 = await openai.audio.speech.create({
-//     model: "tts-1",
-//     voice: "alloy",
-//     input: "Today is a wonderful day to build something people love!",
+  import { ref, onMounted, onBeforeMount } from 'vue';
+  const runtimeConfig = useRuntimeConfig()
+  // Caching
+  // Store API call results to retrieve them faster when the same request is made again. This reduces the need for the server to process and send the same data multiple times. 
+// console.log(runtimeConfig.ttsApi)
+// async function fetchSpeech() {
+//   const response = await fetch('/api/speech', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       text: 'Hello, world!',
+//       voiceId: 'Scarlett',
+//       bitrate: '192k',
+//       speed: 0,
+//       pitch: 1.0,
+//     }),
 //   });
-//   console.log(speechFile);
-//   const buffer = Buffer.from(await mp3.arrayBuffer());
-//   await fs.promises.writeFile(speechFile, buffer);
+  
+//   const data = await response.json();
+//   console.log(data);
 // }
-// main();
 </script>
 
-
 <!-- <template>
-  <div>
-    <h1>Scraped Quote</h1>
-    <div v-if="quote">
-      <p>"{{ quote.novelName }}"</p>
-      <p>- {{ quote.chapTitle }}</p>
-      <p>- {{ quote.novelText }}</p>
-    </div>
-    <div v-else>
-      <p>Loading...</p>
-      
+  <div class="bg-gray-100 min-h-screen flex flex-col gap-5">
+    <header class="text-center font-bold text-[25px] border py-3 border-gray-300 bg-green-200">
+      ReadOn
+    </header>
+    <div class="px-[6%] flex gap-2">
+      <input v-model="input" type="text" placeholder="say anything">
+      <button @click="generateSpeech" class="bg-blue-500 text-white px-4 py-2 rounded">
+        Generate TTS
+      </button>
+      <audio :src="audio" controls/>
+      <PlayText />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
+import axios from "axios"
+const input = ref('')
+const ttsData = ref(null);
 
-const quote = ref(null);
-
-
-onMounted(async () => {
+async function generateSpeech() {
   try {
-    const response = await fetch('/api/quotes');
-    console.log(response)
-    // Check if the response is JSON
-    const contentType = response.headers.get('content-type');
-    if (contentType && contentType.indexOf('application/json') !== -1) {
-      const data = await response.json();
-      if (!data || Object.keys(data).length === 0) {
-        console.error('Received an empty JSON response.');
-      } else {
-        quote.value = data;
-      }
-    } else {
-      const text = await response.text();
-      console.error('Received non-JSON response:', text);
+    const response = await fetch('/api/speech', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: 'Hello, world!',
+        voiceId: 'Scarlett',
+        bitrate: '192k',
+        speed: 0,
+        pitch: 1.0,
+      }),
+    });
+
+    const data = await response.json();
+    ttsData.value = data.status;
+
+    if (ttsData.value && ttsData.value.AudioBuffer) {
+      const audioContext = new (window.AudioContext || window.AudioContext)();
+      const source = audioContext.createBufferSource();
+      audioContext.decodeAudioData(ttsData.value.AudioBuffer, (buffer) => {
+        source.buffer = buffer;
+        source.connect(audioContext.destination);
+        source.start(0);
+      });
     }
-    console.log(quote.value)
   } catch (error) {
-    console.error('Failed to fetch quote:', error);
+    console.error('Error generating TTS:', error);
   }
-});
-
-</script>
-
-<style scoped>
-h1 {
-  text-align: center;
 }
-p {
-  font-size: 20px;
-  text-align: center;
-}
-</style> -->
+</script> -->
+
+
+
+
+<!-- <template>
+  <div>
+    <input v-model="text" placeholder="Enter text to convert to speech">
+    <button @click="convertTextToSpeech">Convert to Speech</button>
+    <audio v-if="audioUrl" :src="audioUrl" controls></audio>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const text = ref('');
+const audioUrl = ref('');
+
+const convertTextToSpeech = async () => {
+  try {
+    const response = await $fetch('/api/tts', {
+      params: { text: text.value },
+      responseType: 'blob'
+    });
+
+    // Create a URL for the audio file to play it in the browser
+    audioUrl.value = URL.createObjectURL(response);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+</script> -->
+
+
+
 
 
 

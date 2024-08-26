@@ -13,9 +13,11 @@ export default defineNuxtConfig({
   //   myVariable: process.env.NUXT_ENV_MY_VAR
   // },
   runtimeConfig: {
-    openAi: {
-      secretKey: process.env.OPENAI_API_KEY,
-    },
+    
+    // apiSecret:"123",
+    public: {
+      speechApi: process.env.UNREAL_SPEECH_API_KEY,
+    }
     
   },
   
