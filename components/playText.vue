@@ -58,7 +58,7 @@ const quote = ref(null);
 
 const fetchQuote = async () => {
   try {
-    console.log('User input URL:', userInput.value); // Debugging line
+    // console.log('User input URL:', userInput.value); // Debugging line
     const response = await fetch(`/api/quotes?url=${encodeURIComponent(userInput.value)}`, {
       method: 'GET',
       headers: {
