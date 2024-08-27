@@ -7,7 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "npx playwright install chromium --with-deps"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/icon": "^1.4.10",
@@ -21,7 +21,6 @@
     "dotenv": "^16.4.5",
     "lucide-vue-next": "^0.427.0",
     "nuxt": "^3.13.0",
-    "playwright": "^1.46.1",
     "playwright-aws-lambda": "^0.11.0",
     "puppeteer": "^23.1.0",
     "radix-vue": "^1.9.4",
