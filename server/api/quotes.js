@@ -163,9 +163,7 @@ export default defineEventHandler(async (event) => {
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        '--disable-accelerated-2d-canvas',
-        '--no-zygote',
-        '--single-process']
+        ]
       });
       const page = await browser.newPage();
       await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -192,7 +190,12 @@ export default defineEventHandler(async (event) => {
   else if (url.includes('https://novelbjn.novelupdates.net/')) {
     console.log("Processing NovelBJN URL");
     try {
-      const browser = await playwright.launchChromium({ headless: true });
+      const browser = await playwright.launchChromium({ headless: true, args:[
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        ] 
+      });
       const page = await browser.newPage();
       await page.goto(url, { waitUntil: 'domcontentloaded' });
 
