@@ -163,7 +163,7 @@ export default defineEventHandler(async (event) => {
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        ]
+        ],ignoreDefaultArgs: ['--disable-extensions']
       });
       const page = await browser.newPage();
       await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -194,7 +194,8 @@ export default defineEventHandler(async (event) => {
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        ] 
+        ],
+        ignoreDefaultArgs: ['--disable-extensions']
       });
       const page = await browser.newPage();
       await page.goto(url, { waitUntil: 'domcontentloaded' });
