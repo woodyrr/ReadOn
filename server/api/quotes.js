@@ -92,7 +92,7 @@ export default defineEventHandler(async (event) => {
         '--disable-dev-shm-usage',
         '--disable-accelerated-2d-canvas',
         '--no-zygote',
-        '--single-process'] 
+        '--single-process'], executablePath: '/path/to/chrome' 
       });
       const page = await browser.newPage();
       await page.goto(url, { waitUntil: 'domcontentloaded' });
