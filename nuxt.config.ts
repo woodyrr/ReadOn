@@ -1,16 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import type { ServerMiddleware } from '@nuxt/types';
+
+// const corsMiddleware: ServerMiddleware = {
+//   path: '/api',
+//   handler: '~/server/middleware/cors.ts'
+// };
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/icon"],
-  // runtimeConfig: {
-  //   public: {
-  //     secret:process.env.OPENAI_API_KEY
+  // hooks: {
+  //   'render:setupMiddleware'(app) {
+  //     app.use(corsMiddleware.path, corsMiddleware.handler);
   //   }
-  // },
-  // env: {
-  //   myVariable: process.env.NUXT_ENV_MY_VAR
   // },
   runtimeConfig: {
     

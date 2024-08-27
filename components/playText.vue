@@ -53,7 +53,9 @@ const quote = ref(null);
 //     console.error('Failed to fetch quote:', error);
 //   }
 // };
-
+// const response = await fetch(`/api/quotes?url=${encodeURIComponent('https://novelfull.net/martial-god-asura/chapter-2-beauty-elder.html')}`);
+// const data = await response.json();
+// console.log(data);
 //need to save mp3.files
 
 const fetchQuote = async () => {
