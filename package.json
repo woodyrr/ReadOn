@@ -22,6 +22,7 @@
     "lucide-vue-next": "^0.427.0",
     "nuxt": "^3.13.0",
     "playwright": "^1.46.1",
+    "playwright-aws-lambda": "^0.11.0",
     "puppeteer": "^23.1.0",
     "radix-vue": "^1.9.4",
     "shadcn-nuxt": "^0.10.4",
