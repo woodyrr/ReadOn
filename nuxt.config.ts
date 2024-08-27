@@ -21,11 +21,4 @@ export default defineNuxtConfig({
     
   },
   
-
-  // devServer: {
-  //   https: {
-  //     key: './server.key',
-  //     cert: './server.crt'
-  //   }
-  // }
 })
