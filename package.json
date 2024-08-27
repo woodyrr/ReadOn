@@ -9,6 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "engines": {
+    "node": "^14"
+  },
   "dependencies": {
     "@nuxt/icon": "^1.4.10",
     "@nuxt/types": "^2.18.1",
