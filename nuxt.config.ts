@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import type { ServerMiddleware } from '@nuxt/types';
+// import type { ServerMiddleware } from '@nuxt/types';
 
 // const corsMiddleware: ServerMiddleware = {
 //   path: '/api',
