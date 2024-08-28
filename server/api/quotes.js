@@ -24,7 +24,7 @@ if (process.env.VERCEL_ENV === "production") {
           headless: chromium.headless,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'domcontentloaded' });
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
         const novel = await page.evaluate(() => {
             const chapTitle = document.querySelector('.chapter-title')?.innerText || 'No chapter title';
@@ -53,7 +53,7 @@ if (process.env.VERCEL_ENV === "production") {
             headless: chromium.headless,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'domcontentloaded' });
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
   
         const novel = await page.evaluate(() => {
           const chapTitle = document.querySelector('.chr-title')?.innerText || 'No chapter title';
@@ -83,7 +83,7 @@ else {
           args: chromium.args,
           defaultViewport: chromium.defaultViewport,
           executablePath,
-          headless: chromium.headless,
+          headless: false,
         });
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -227,6 +227,8 @@ else {
   //     return { error: 'Failed to scrape data' };
   //   }
   // }
+
+
 });
 
 // import chromium  from 'playwright-aws-lambda';
