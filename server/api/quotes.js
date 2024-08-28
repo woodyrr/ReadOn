@@ -1,6 +1,7 @@
-import puppeteer from 'puppeteer-core'; // Note: use puppeteer-core
+// import puppeteer from 'puppeteer-core'; // Note: use puppeteer-core
+import puppeteer from 'puppeteer'; 
 import { getQuery } from 'h3';
-const chromiumPath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
+// const chromiumPath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
 export default defineEventHandler(async (event) => {
   const { url } = getQuery(event);
   console.log("Received URL:", url);  // Log the URL received
@@ -12,7 +13,7 @@ export default defineEventHandler(async (event) => {
     try {
       // Launch a browser using Puppeteer
       const browser = await puppeteer.launch({
-        executablePath: chromiumPath, // Path to Chromium
+        // executablePath: chromiumPath, // Path to Chromium
         headless: true,
         args: ["--no-sandbox"],
         ignoreDefaultArgs: ['--disable-extensions'],
@@ -30,7 +31,7 @@ export default defineEventHandler(async (event) => {
       });
       
       await browser.close();
-      console.log(novel);
+      // console.log(novel);
       return novel;
       
     } catch (error) {
@@ -41,7 +42,7 @@ export default defineEventHandler(async (event) => {
     try {
       // Launch a browser using Puppeteer
       const browser = await puppeteer.launch({
-        executablePath: chromiumPath, // Path to Chromium
+        // executablePath: chromiumPath, // Path to Chromium
         headless: true,
         args: ["--no-sandbox", '--enable-gpu'],
         ignoreDefaultArgs: ['--disable-extensions'],
@@ -59,6 +60,7 @@ export default defineEventHandler(async (event) => {
       });
       
       await browser.close();
+      // console.log(novel);
       return novel;
     } catch (error) {
       console.error('Puppeteer failed:', error);
