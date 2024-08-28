@@ -14,8 +14,8 @@ export default defineEventHandler(async (event) => {
       // Launch a browser using Puppeteer
       const browser = await puppeteer.launch({
         // executablePath: chromiumPath, // Path to Chromium
-        headless: true,
-        args: ["--no-sandbox"],
+        headless: "new",
+        args: ["--no-sandbox", `--disable-gpu`, `--disable-dev-shm-usage`],
         ignoreDefaultArgs: ['--disable-extensions'],
       });
       const page = await browser.newPage();
@@ -43,8 +43,8 @@ export default defineEventHandler(async (event) => {
       // Launch a browser using Puppeteer
       const browser = await puppeteer.launch({
         // executablePath: chromiumPath, // Path to Chromium
-        headless: true,
-        args: ["--no-sandbox", '--enable-gpu'],
+        headless: "new",
+        args: ["--no-sandbox", `--disable-gpu`, `--disable-dev-shm-usage`],
         ignoreDefaultArgs: ['--disable-extensions'],
       });
       const page = await browser.newPage();

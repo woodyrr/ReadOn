@@ -5,7 +5,7 @@
 //   path: '/api',
 //   handler: '~/server/middleware/cors.ts'
 // };
-
+// "build": "NITRO_PRESET=vercel-edge nuxt build",
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
