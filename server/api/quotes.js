@@ -18,7 +18,19 @@ if (process.env.VERCEL_ENV === "production") {
   if (url.includes('https://novelfull.net/')) {
     try {
         const browser = await puppeteerCore.launch({
-          args: chromium.args,
+          // args: chromium.args,
+          args: [
+            '--disable-gpu',
+            '--disable-dev-shm-usage',
+            '--disable-setuid-sandbox',
+            '--no-first-run',
+            '--no-sandbox',
+            '--no-zygote',
+            '--deterministic-fetch',
+            '--disable-features=IsolateOrigins',
+            '--disable-site-isolation-trials',
+            // '--single-process',
+        ],
           defaultViewport: chromium.defaultViewport,
           executablePath,
           headless: chromium.headless,
@@ -47,7 +59,19 @@ if (process.env.VERCEL_ENV === "production") {
       try {
         // Launch a browser using Puppeteer
         const browser = await puppeteerCore.launch({
-          args: chromium.args,
+          // args: chromium.args,
+          args: [
+            '--disable-gpu',
+            '--disable-dev-shm-usage',
+            '--disable-setuid-sandbox',
+            '--no-first-run',
+            '--no-sandbox',
+            '--no-zygote',
+            '--deterministic-fetch',
+            '--disable-features=IsolateOrigins',
+            '--disable-site-isolation-trials',
+            // '--single-process',
+        ],
             defaultViewport: chromium.defaultViewport,
             executablePath,
             headless: chromium.headless,
