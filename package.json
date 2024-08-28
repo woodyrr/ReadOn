@@ -9,9 +9,6 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "engines": {
-    "node": "^14"
-  },
   "dependencies": {
     "@nuxt/icon": "^1.4.10",
     "@nuxt/types": "^2.18.1",
@@ -25,7 +22,8 @@
     "lucide-vue-next": "^0.427.0",
     "nuxt": "^3.13.0",
     "playwright-aws-lambda": "^0.10.0",
-    "puppeteer": "^23.1.0",
+    "puppeteer": "^22.5.0",
+    "puppeteer-core": "^22.5.0",
     "radix-vue": "^1.9.4",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.2",
@@ -35,6 +33,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@sparticuz/chromium": "^122.0.0",
     "typescript": "^5.5.4"
   }
 }

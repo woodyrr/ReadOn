@@ -15,6 +15,12 @@ export default defineNuxtConfig({
   //     app.use(corsMiddleware.path, corsMiddleware.handler);
   //   }
   // },
+  // chromium-min v^127.0.0
+  // puppeteer-core v^23.2.0
+  // "puppeteer": "^23.1.0"
+  //"engines": {
+  //   "node": "^14"
+  // },
   runtimeConfig: {
     
     // apiSecret:"123",
