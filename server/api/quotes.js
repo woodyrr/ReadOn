@@ -36,8 +36,8 @@ if (process.env.VERCEL_ENV === "production") {
           headless: chromium.headless,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
-
+        // await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 10000 }); // 10 seconds
         const novel = await page.evaluate(() => {
             const chapTitle = document.querySelector('.chapter-title')?.innerText || 'No chapter title';
             const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
@@ -77,7 +77,8 @@ if (process.env.VERCEL_ENV === "production") {
             headless: chromium.headless,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        // await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 10000 }); // 10 seconds
   
         const novel = await page.evaluate(() => {
           const chapTitle = document.querySelector('.chr-title')?.innerText || 'No chapter title';
