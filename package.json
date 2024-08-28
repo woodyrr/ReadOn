@@ -7,7 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "node node_modules/puppeteer/install.mjs"
+    "postinstall": "npx puppeteer browsers install chrome"
   },
   "dependencies": {
     "@nuxt/icon": "^1.4.10",
