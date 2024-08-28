@@ -21,6 +21,12 @@ export default defineNuxtConfig({
   //"engines": {
   //   "node": "^14"
   // },
+  build: {
+    transpile: [
+      'puppeteer-core',
+      '@sparticuz/chromium-min',
+    ],
+  },
   runtimeConfig: {
     
     // apiSecret:"123",

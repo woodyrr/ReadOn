@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "NITRO_PRESET=vercel-edge nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -12,9 +12,11 @@
   "dependencies": {
     "@nuxt/icon": "^1.4.10",
     "@nuxt/types": "^2.18.1",
+    "@sparticuz/chromium": "^119.0.2",
     "@vercel/kv": "^1.0.1",
     "@vueuse/core": "^10.11.1",
     "axios": "^1.7.5",
+    "chrome-aws-lambda": "^10.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
@@ -23,7 +25,7 @@
     "nuxt": "^3.13.0",
     "playwright-aws-lambda": "^0.10.0",
     "puppeteer": "^22.5.0",
-    "puppeteer-core": "^22.5.0",
+    "puppeteer-core": "^21.5.1",
     "radix-vue": "^1.9.4",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.2",
@@ -33,7 +35,9 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
-    "@sparticuz/chromium": "^122.0.0",
     "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": "18"
   }
 }

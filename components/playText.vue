@@ -265,12 +265,12 @@ const convertTextToSpeech = async () => {
         <Button class="bg-green-300 hover:bg-green-200 w-[50%] sm:w-auto" @click=" generateSpeech" >
             <div class="flex gap-1 text-black items-center" v-if="isPlaying">
                 <div>pause</div>
-                <Icon name="uil:pause"  style="color: black" />
+                <!-- <Icon name="uil:pause"  style="color: black" /> -->
                 <p v-if="isLoading" class="flex gap-1 text-center items-center text-xl" ><svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>Loading...</p>
             </div>
             <div class="flex gap-1 text-black items-center" v-else>
                 <div>play</div>
-                <Icon name="uil:play"  style="color: black" />
+                <!-- <Icon name="uil:play"  style="color: black" /> -->
                 <p v-if="isLoading" class="flex gap-1 text-center items-center text-xl" ><svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>Loading...</p>
             </div>
         </Button>
