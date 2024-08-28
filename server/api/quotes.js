@@ -36,7 +36,7 @@ if (process.env.VERCEL_ENV === "production") {
           headless: chromium.headless,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 8000 });
 
         const novel = await page.evaluate(() => {
             const chapTitle = document.querySelector('.chapter-title')?.innerText || 'No chapter title';
