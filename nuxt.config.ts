@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   //"engines": {
   //   "node": "^14"
   // },
+  // "@sparticuz/chromium-min": "^127.0.0",
   build: {
     transpile: [
       'puppeteer-core',
