@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   build: {
     transpile: [
       'puppeteer-core',
-      '@sparticuz/chromium-min',
+      '@sparticuz/chromium',
     ],
   },
   runtimeConfig: {
