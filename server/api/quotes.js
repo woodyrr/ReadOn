@@ -5,6 +5,9 @@ import chromium from '@sparticuz/chromium';
 // import edgeChromium from 'chrome-aws-lambda'
 // const chromiumPath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
 export default defineEventHandler(async (event) => {
+
+
+
   const { url } = getQuery(event);
   // let executablePath;
   // if (process.env.VERCEL_ENV === "production") {
@@ -43,8 +46,10 @@ export default defineEventHandler(async (event) => {
           headless: chromium.headless,
         });
         const page = await browser.newPage();
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
         // await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 10000 }); // 10 seconds
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 8000 }); // 10 seconds
+        await page.waitForSelector('body');
         const novel = await page.evaluate(() => {
             const chapTitle = document.querySelector('.chapter-title')?.innerText || 'No chapter title';
             const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
@@ -84,9 +89,10 @@ export default defineEventHandler(async (event) => {
             headless: chromium.headless,
         });
         const page = await browser.newPage();
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
         // await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 10000 }); // 10 seconds
-  
+        await page.waitForSelector('body');
         const novel = await page.evaluate(() => {
           const chapTitle = document.querySelector('.chr-title')?.innerText || 'No chapter title';
           const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
@@ -105,8 +111,134 @@ export default defineEventHandler(async (event) => {
       }
     }
     
-});
+// }
 // else {
+//   const executablePath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
+  
+//   if (url.includes('https://novelfull.net/')) {
+//     try {
+//         const browser = await puppeteer.launch({
+//           args: chromium.args,
+//           defaultViewport: chromium.defaultViewport,
+//           executablePath,
+//           headless: false,
+//         });
+//         const page = await browser.newPage();
+//         await page.goto(url, { waitUntil: 'domcontentloaded' });
+
+//         const novel = await page.evaluate(() => {
+//             const chapTitle = document.querySelector('.chapter-title')?.innerText || 'No chapter title';
+//             const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
+//             const novelText = document.querySelector('.chapter-c')?.innerText || 'No content';
+//             const novelName = document.querySelector('.truyen-title')?.innerText || 'No title';
+//             return { chapTitle, novelName, novelText, nextChap };
+//         });
+//             await browser.close();
+//               // console.log(novel);
+//             return novel;
+//             } 
+//     catch (error) {
+//         console.error('Puppeteer failed:', error);
+//         return { error: 'Failed to scrape data' };
+//     }
+//   }
+//   else if (url.includes('https://novelbjn.novelupdates.net/')) {
+//     const executablePath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
+//       try {
+//         // Launch a browser using Puppeteer
+//         const browser = await puppeteer.launch({
+//           args: chromium.args,
+//             defaultViewport: chromium.defaultViewport,
+//             executablePath,
+//             headless: chromium.headless,
+//         });
+//         const page = await browser.newPage();
+//         await page.goto(url, { waitUntil: 'domcontentloaded' });
+  
+//         const novel = await page.evaluate(() => {
+//           const chapTitle = document.querySelector('.chr-title')?.innerText || 'No chapter title';
+//           const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
+//           const novelText = document.querySelector('.chr-c')?.innerText || 'No content';
+//           const novelName = document.querySelector('.novel-title')?.innerText || 'No title';
+          
+//           return { chapTitle, novelName, novelText, nextChap };
+//         });
+        
+//         await browser.close();
+//         // console.log(novel);
+//         return novel;
+//       } catch (error) {
+//         console.error('Puppeteer failed:', error);
+//         return { error: 'Failed to scrape data' };
+//       }
+//     }
+    
+// }
+
+// else if (url.includes('https://novelbjn.novelupdates.net/')) {
+//   const executablePath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
+  
+//   if (url.includes('https://novelfull.net/')) {
+//     try {
+//         const browser = await puppeteer.launch({
+//           args: chromium.args,
+//           defaultViewport: chromium.defaultViewport,
+//           executablePath,
+//           headless: false,
+//         });
+//         const page = await browser.newPage();
+//         await page.goto(url, { waitUntil: 'domcontentloaded' });
+
+//         const novel = await page.evaluate(() => {
+//             const chapTitle = document.querySelector('.chapter-title')?.innerText || 'No chapter title';
+//             const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
+//             const novelText = document.querySelector('.chapter-c')?.innerText || 'No content';
+//             const novelName = document.querySelector('.truyen-title')?.innerText || 'No title';
+//             return { chapTitle, novelName, novelText, nextChap };
+//         });
+//             await browser.close();
+//               // console.log(novel);
+//             return novel;
+//             } 
+//     catch (error) {
+//         console.error('Puppeteer failed:', error);
+//         return { error: 'Failed to scrape data' };
+//     }
+//   }
+//   else if (url.includes('https://novelbjn.novelupdates.net/')) {
+//     const executablePath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
+//       try {
+//         // Launch a browser using Puppeteer
+//         const browser = await puppeteer.launch({
+//           args: chromium.args,
+//             defaultViewport: chromium.defaultViewport,
+//             executablePath,
+//             headless: chromium.headless,
+//         });
+//         const page = await browser.newPage();
+//         await page.goto(url, { waitUntil: 'domcontentloaded' });
+  
+//         const novel = await page.evaluate(() => {
+//           const chapTitle = document.querySelector('.chr-title')?.innerText || 'No chapter title';
+//           const nextChap = document.querySelector('.btn-group #next_chap')?.innerText || 'No next chapter link';
+//           const novelText = document.querySelector('.chr-c')?.innerText || 'No content';
+//           const novelName = document.querySelector('.novel-title')?.innerText || 'No title';
+          
+//           return { chapTitle, novelName, novelText, nextChap };
+//         });
+        
+//         await browser.close();
+//         // console.log(novel);
+//         return novel;
+//       } catch (error) {
+//         console.error('Puppeteer failed:', error);
+//         return { error: 'Failed to scrape data' };
+//       }
+//     }
+    
+// }
+
+// else if (url.includes('https://novelbjn.novelupdates.net/')) {
 //   const executablePath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
   
 //   if (url.includes('https://novelfull.net/')) {
