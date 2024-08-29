@@ -9,7 +9,7 @@ import chromium from '@sparticuz/chromium';
 export default defineEventHandler(async (event) => {
 
   let executablePath;
-    if (process.env.VERCEL_ENV === "production") {
+    if (process.env.NODE_ENV === "production") {
         executablePath = await chromium.executablePath();
     } else {
     executablePath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
