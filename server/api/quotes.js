@@ -1,7 +1,7 @@
 import puppeteerCore from 'puppeteer-core'; // Note: use puppeteer-core
 import puppeteer from 'puppeteer'; 
 import { getQuery } from 'h3';
-import chromium from '@sparticuz/chromium';
+import chromium from '@sparticuz/chromium-min';
 // import edgeChromium from 'chrome-aws-lambda'
 // const chromiumPath = process.env.CHROMIUM_PATH || 'C:/Program Files/Chromium/Application/chrome.exe';
 
